@@ -35,6 +35,7 @@ namespace ZpdReader
             {
                 string? line = reader.ReadLine();
                 if (string.IsNullOrWhiteSpace(line)) continue;
+                if (IsEndLine(line)) break;
                 // 检测数据段起始行
                 if (line.StartsWith('+'))
                 {
@@ -49,7 +50,7 @@ namespace ZpdReader
                     else throw new ArgumentException($"Invalid marker type: {marker}");
                 }
             }
-            throw new NotImplementedException();
+            return zpdData;
         }
         private static bool TryReadDataHead(StreamReader reader, out DataHead? dataHead)
         {
@@ -83,7 +84,7 @@ namespace ZpdReader
             dataHead = null;
             return false;
         }
-        private List<string> ReadDataSectionAllLines(StreamReader reader)
+        private static List<string> ReadDataSectionAllLines(StreamReader reader)
         {
             List<string> lines = [];
             while (!reader.EndOfStream)
@@ -94,6 +95,10 @@ namespace ZpdReader
                 lines.Add(line);
             }
             return lines;
+        }
+        private static bool IsEndLine(string line)
+        {
+            return line.StartsWith("%=ENDTRO");
         }
     }
 }
