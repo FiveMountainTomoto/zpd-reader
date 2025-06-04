@@ -45,8 +45,15 @@ namespace ZpdFile
                     if (MarkerTypeDict.TryGetValue(marker, out Type? markerType))
                     {
                         // 创建数据段实例
-                        IZpdDataSection prop = secHandler.Handle(markerType, ReadDataSectionAllLines(reader));
-                        zpdData.FillProperty(prop);
+                        try
+                        {
+                            IZpdDataSection prop = secHandler.Handle(markerType, ReadDataSectionAllLines(reader));
+                            zpdData.FillProperty(prop);
+                        }
+                        catch (ArgumentException)
+                        {
+                            continue;
+                        }
                     }
                     else throw new ArgumentException($"Invalid marker type: {marker}");
                 }
