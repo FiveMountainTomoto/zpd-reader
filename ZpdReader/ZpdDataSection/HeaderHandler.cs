@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZpdReader.DataStruct.ZpdDataComponent.Site;
+using ZpdFile.DataStruct.ZpdDataComponent.Site;
 
-namespace ZpdReader.ZpdDataSectionHandler
+namespace ZpdFile.ZpdDataSection
 {
     internal static class HeaderHandler
     {

@@ -1,6 +1,6 @@
 ﻿using geodesy_data_struct.DataClass;
 
-namespace ZpdReader.DataStruct.ZpdDataComponent.Site
+namespace ZpdFile.DataStruct.ZpdDataComponent.Site
 {
     public record SiteId : IZpdDataSection
     {

@@ -1,8 +1,8 @@
-﻿using ZpdReader.DataStruct.ZpdDataComponent;
-using ZpdReader.DataStruct.ZpdDataComponent.Site;
-using static ZpdReader.ZpdDataSectionHandler.HeaderHandler;
+﻿using ZpdFile.DataStruct.ZpdDataComponent;
+using ZpdFile.DataStruct.ZpdDataComponent.Site;
+using static ZpdFile.ZpdDataSection.HeaderHandler;
 
-namespace ZpdReader.ZpdDataSectionHandler.SectionHandlers
+namespace ZpdFile.ZpdDataSection.SectionHandlers
 {
     internal class SiteIdHandler : ISectionHandler
     {

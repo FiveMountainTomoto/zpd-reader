@@ -1,9 +1,10 @@
-﻿using ZpdReader.DataStruct;
-using ZpdReader.DataStruct.ZpdDataComponent;
-using ZpdReader.DataStruct.ZpdDataComponent.Site;
-using ZpdReader.DataStruct.ZpdDataComponent.Trop;
+﻿using ZpdFile.DataStruct;
+using ZpdFile.DataStruct.ZpdDataComponent;
+using ZpdFile.DataStruct.ZpdDataComponent.Site;
+using ZpdFile.DataStruct.ZpdDataComponent.Trop;
+using ZpdFile.ZpdDataSection;
 
-namespace ZpdReader
+namespace ZpdFile
 {
     public class ZpdReader
     {
@@ -25,7 +26,7 @@ namespace ZpdReader
         {
             using StreamReader reader = new(filePath);
             ZpdData zpdData = new();
-            ZpdDataSectionHandler secHandler = new();
+            ZpdDataSectionsHandler secHandler = new();
             // 读取数据头
             if (!TryReadDataHead(reader, out DataHead? dataHead))
                 throw new ArgumentException("Invalid ZPD file format: Data head not found.");

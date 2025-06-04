@@ -1,4 +1,4 @@
-﻿namespace ZpdReader
+﻿namespace ZpdFile
 {
     internal class Program
     {

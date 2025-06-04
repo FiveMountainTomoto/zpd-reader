@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using ZpdReader.DataStruct.ZpdDataComponent;
-using ZpdReader.DataStruct.ZpdDataComponent.Site;
-using ZpdReader.DataStruct.ZpdDataComponent.Trop;
+using ZpdFile.DataStruct.ZpdDataComponent;
+using ZpdFile.DataStruct.ZpdDataComponent.Site;
+using ZpdFile.DataStruct.ZpdDataComponent.Trop;
 
-namespace ZpdReader.DataStruct
+namespace ZpdFile.DataStruct
 {
     public class ZpdData
     {

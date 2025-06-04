@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ZpdReader.DataStruct.ZpdDataComponent;
+using ZpdFile.DataStruct.ZpdDataComponent;
 
-namespace ZpdReader.ZpdDataSectionHandler.SectionHandlers
+namespace ZpdFile.ZpdDataSection.SectionHandlers
 {
     internal interface ISectionHandler
     {

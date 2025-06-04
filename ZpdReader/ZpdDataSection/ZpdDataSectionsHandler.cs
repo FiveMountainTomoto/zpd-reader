@@ -1,11 +1,11 @@
-﻿using ZpdReader.DataStruct.ZpdDataComponent;
-using ZpdReader.ZpdDataSectionHandler.SectionHandlers;
+﻿using ZpdFile.DataStruct.ZpdDataComponent;
+using ZpdFile.ZpdDataSection.SectionHandlers;
 
-namespace ZpdReader.ZpdDataSectionHandler
+namespace ZpdFile.ZpdDataSection
 {
-    internal class ZpdDataSectionHandler
+    public class ZpdDataSectionsHandler
     {
-        public ZpdDataSectionHandler()
+        public ZpdDataSectionsHandler()
         {
             IEnumerable<Type> handlerTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(a => a.GetTypes())

@@ -1,4 +1,4 @@
-﻿namespace ZpdReader.DataStruct.ZpdDataComponent
+﻿namespace ZpdFile.DataStruct.ZpdDataComponent
 {
     public interface IZpdDataSection
     {

@@ -1,4 +1,4 @@
-﻿namespace ZpdReader.DataStruct.ZpdDataComponent.Site
+﻿namespace ZpdFile.DataStruct.ZpdDataComponent.Site
 {
     public record SiteGpsPhaseCenter
     {
