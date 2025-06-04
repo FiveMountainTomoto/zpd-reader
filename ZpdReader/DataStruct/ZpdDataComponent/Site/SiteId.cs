@@ -2,9 +2,10 @@
 
 namespace ZpdReader.DataStruct.ZpdDataComponent.Site
 {
-    public record SiteId
+    public record SiteId : IZpdDataSection
     {
-        public string? CodePointType { get; set; }
+        public string? Code { get; set; }
+        public string? PT { get; set; }
         public string? Domes { get; set; }
         public string? Type { get; set; }
         public string? StationDescription { get; set; }
