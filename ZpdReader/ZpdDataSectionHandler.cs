@@ -54,8 +54,8 @@ namespace ZpdReader
             //*CODE PT __DOMES__ T _STATION DESCRIPTION__ APPROX_LON_ APPROX_LAT_ _APP_H_
             // ABMF  A 97103M001 P Les Abymes, Guadeloupe 298 28 20.9  16 15 44.3   -25.6
             List<string> lineList = lines.ToList();
-            if (lineList.Count != 2 ||
-            lineList[0] != "*CODE PT __DOMES__ T _STATION DESCRIPTION__ APPROX_LON_ APPROX_LAT_ _APP_H_")
+            string[] header = GetHeader(lineList[0]);
+            if (lineList.Count != 2 ||!IsHeaderEqual(header, HeadersDict[typeof(SiteId)]))
                 throw new ArgumentException("Invalid format of SITE/ID section");
             SiteId siteId = new()
             {
@@ -77,6 +77,9 @@ namespace ZpdReader
         };
         private static readonly Func<IEnumerable<string>, IZpdDataSection> TropStaCoordinatesHandler = (lines) =>
         {
+            // Sample:
+            // *SITE PT SOLN T __STA_X_____ __STA_Y_____ __STA_Z_____ SYSTEM REMRK
+            //  ABMF  A    1 P  2919785.800 -5383744.950  1774604.843 IGS14_ XYZ
             throw new NotImplementedException();
         };
         private Dictionary<Type, Func<IEnumerable<string>, IZpdDataSection>> HandlersDict = new()
