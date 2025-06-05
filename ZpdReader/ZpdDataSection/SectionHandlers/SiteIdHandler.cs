@@ -13,8 +13,9 @@ namespace ZpdFile.ZpdDataSection.SectionHandlers
         public IZpdDataSection Handle(IEnumerable<string> lines)
         {
             List<string> lineList = lines.ToList();
+            // Check header
             string[] header = GetHeader(lineList[0]);
-            if (lineList.Count != 2 || !IsHeaderEqual(header, HeadersDict[typeof(SiteId)]))
+            if (lineList.Count != 2 || !IsHeaderValid(header, SectionType))
                 throw new ArgumentException("Invalid format of SITE/ID section:\n" + string.Join(Environment.NewLine, lineList));
             string[] data = lineList[1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             // get station description
