@@ -19,10 +19,7 @@ namespace ZpdFile
             {"TROP/STA_COORDINATES", typeof(TropStaCoordinates) },
             {"TROP/SOLUTION", typeof(TropSolution) }
         };
-        public ZpdReader()
-        {
-        }
-        public ZpdData Read(string filePath)
+        public static ZpdData Read(string filePath)
         {
             using StreamReader reader = new(filePath);
             ZpdData zpdData = new();
