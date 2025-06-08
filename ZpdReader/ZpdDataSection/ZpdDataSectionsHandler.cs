@@ -3,7 +3,7 @@ using ZpdFile.ZpdDataSection.SectionHandlers;
 
 namespace ZpdFile.ZpdDataSection
 {
-    public class ZpdDataSectionsHandler
+    internal class ZpdDataSectionsHandler
     {
         public ZpdDataSectionsHandler()
         {
