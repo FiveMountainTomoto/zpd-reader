@@ -59,6 +59,8 @@ namespace ZpdFile
         }
         private static bool TryReadDataHead(StreamReader reader, out DataHead? dataHead)
         {
+            // Sample:
+            // %=TRO 0.01 XYZ 19:022:15608 IGS 18:365:75600 19:002:03600 P  ABMF
             while (!reader.EndOfStream)
             {
                 // 跳过空行
