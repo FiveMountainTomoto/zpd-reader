@@ -27,7 +27,8 @@ namespace ZpdFile.ZpdDataSection
         {
             {typeof(SiteAntenna), ["SITE","PT","SOLN","T","DATA_START","DATA_END","DESCRIPTION","S/N"] },
             {typeof(SiteId), ["CODE","PT","DOMES","T","STATION","DESCRIPTION","APPROX_LON","APPROX_LAT","APP_H"] },
-            {typeof(TropStaCoordinates),["SITE","PT","SOLN","T", "STA_X", "STA_Y", "STA_Z", "SYSTEM", "REMRK"] }
+            {typeof(TropStaCoordinates),["SITE","PT","SOLN","T","STA_X","STA_Y","STA_Z","SYSTEM","REMRK"] },
+            {typeof(TropSolution),["SITE","EPOCH","TROTOT","STDDEV","TGNTOT","STDDEV","TGETOT","STDDEV"] }
         };
     }
 }
