@@ -19,11 +19,17 @@ namespace ZpdFile
             {"TROP/STA_COORDINATES", typeof(TropStaCoordinates) },
             {"TROP/SOLUTION", typeof(TropSolution) }
         };
-        public static ZpdData Read(string filePath)
+        private ZpdDataSectionsHandler _secHandl;
+        private ZpdReader()
+        {
+            _secHandl = new();
+        }
+        private static readonly ZpdReader _instance = new();
+        public static ZpdReader Instance => _instance;
+        public ZpdData Read(string filePath)
         {
             using StreamReader reader = new(filePath);
             ZpdData zpdData = new();
-            ZpdDataSectionsHandler secHandler = new();
             // 读取数据头
             if (!TryReadDataHead(reader, out DataHead? dataHead))
                 throw new ArgumentException("Invalid ZPD file format: Data head not found.");
@@ -44,7 +50,7 @@ namespace ZpdFile
                         // 创建数据段实例
                         try
                         {
-                            IZpdDataSection prop = secHandler.Handle(markerType, ReadDataSectionAllLines(reader));
+                            IZpdDataSection prop = _secHandl.Handle(markerType, ReadDataSectionAllLines(reader));
                             zpdData.FillProperty(prop);
                         }
                         catch (ArgumentException)
