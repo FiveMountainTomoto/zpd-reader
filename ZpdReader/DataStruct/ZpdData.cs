@@ -31,5 +31,11 @@ namespace ZpdFile.DataStruct
             }
             throw new ArgumentException($"Invalid section type: {type}");
         }
+        public override string ToString()
+        {
+            var properties = _properties.Where(p => p.GetValue(this) != null)
+                .Select(p => $"{p.GetValue(this)}");
+            return string.Join("\n", properties);
+        }
     }
 }
