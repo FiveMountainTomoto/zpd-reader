@@ -4,12 +4,18 @@ namespace ZpdFile
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            string filePath = @"E:\ZPDcurl\2019\001\abmf0010.19zpd.txt";
-            var reader = ZpdReader.Instance;
-            ZpdData data = reader.Read(filePath);
-            Console.WriteLine(data.ToString());
+            ZpdReader reader = ZpdReader.Instance;
+            string dir = @"E:\ZPDcurl\2019";
+            string[] allFiles = Directory.GetDirectories(dir)
+                .SelectMany(Directory.GetFiles).Where(f => f.EndsWith(".txt")).ToArray();
+            var testFiles = allFiles.Take(10);
+            List<ZpdData> datas = testFiles.Select(reader.Read).ToList();
+            foreach(var data in datas)
+            {
+                Console.WriteLine(data); Console.WriteLine();
+            }
             Console.ReadKey();
         }
     }
