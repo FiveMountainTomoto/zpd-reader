@@ -9,7 +9,7 @@ namespace ZpdFile.ZpdDataSection
         {
             if (!line.StartsWith('*'))
                 throw new ArgumentException($"Invalid header line: {line}");
-            string[] parts = line[1..].Split(' ').Select(p => p.Trim('_')).ToArray();
+            string[] parts = line[1..].Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(p => p.Trim('_')).ToArray();
             return parts;
         }
         internal static bool IsHeaderValid(string[] header, Type dataType)
