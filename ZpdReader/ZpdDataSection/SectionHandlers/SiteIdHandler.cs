@@ -22,7 +22,7 @@ namespace ZpdFile.ZpdDataSection.SectionHandlers
             IEnumerable<string> staDesArr = data.Skip(4).Take(data.Length - 11);// Skip the first 4 elements and take the rest witout the last 7 elements.
             string staDes = string.Join(" ", staDesArr);
             // get approx coor
-            double[] coorArr = data[7..].Select(double.Parse).ToArray();
+            double[] coorArr = data[^7..].Select(double.Parse).ToArray();
             SiteId siteId = new()
             {
                 Code = data[0],
