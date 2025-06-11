@@ -16,7 +16,7 @@ namespace ZpdFile.ZpdDataSection.SectionHandlers
             // Check header
             string[] header = GetHeader(lineList[0]);
             if (lineList.Count != 2 || !IsHeaderValid(header, SectionType))
-                throw new ArgumentException("Invalid format of SITE/ID section:\n" + string.Join(Environment.NewLine, lineList));
+                throw new FormatException("Invalid format of SITE/ID section:\n" + string.Join(Environment.NewLine, lineList));
             string[] data = lineList[1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             // get station description
             IEnumerable<string> staDesArr = data.Skip(4).Take(data.Length - 11);// Skip the first 4 elements and take the rest witout the last 7 elements.

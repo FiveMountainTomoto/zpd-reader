@@ -18,7 +18,7 @@ namespace ZpdFile.ZpdDataSection.SectionHandlers
             // Check header
             string[] header = GetHeader(lineList[0]);
             if (lineList.Count != 2 || !IsHeaderValid(header, SectionType))
-                throw new ArgumentException("Invalid format of TROP/STA_COORDINATES section:\n" + string.Join(Environment.NewLine, lineList));
+                throw new FormatException("Invalid format of TROP/STA_COORDINATES section:\n" + string.Join(Environment.NewLine, lineList));
             // Parse data
             string[] data = lineList[1].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             TropStaCoordinates staCor = new()

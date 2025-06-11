@@ -17,7 +17,7 @@ namespace ZpdFile.ZpdDataSection.SectionHandlers
         {
             string[] header = HeaderHandler.GetHeader(lines.First());
             if(!HeaderHandler.IsHeaderValid(header, SectionType))
-                throw new ArgumentException("Invalid format for TROP/SOLUTION section:\n"+string.Join(Environment.NewLine, lines));
+                throw new FormatException("Invalid format for TROP/SOLUTION section:\n"+string.Join(Environment.NewLine, lines));
             IEnumerable<TropSolutionData> datas = lines.Skip(1).Select(line =>
             {
                 string[] values = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
