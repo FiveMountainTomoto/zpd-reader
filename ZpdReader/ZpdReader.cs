@@ -32,7 +32,7 @@ namespace ZpdFile
             ZpdData zpdData = new();
             // 读取数据头
             if (!TryReadDataHead(reader, out DataHead? dataHead))
-                throw new ArgumentException("Invalid ZPD file format: Data head not found.");
+                throw new FormatException("Invalid ZPD file format: Data head not found.");
             zpdData.DataHead = dataHead;
             // 读取数据段
             while (!reader.EndOfStream)
@@ -62,6 +62,12 @@ namespace ZpdFile
                 }
             }
             return zpdData;
+        }
+        public static IEnumerable<string> GetZpdFilesRecursive(string path)
+        {
+            var dirs = Directory.GetDirectories(path);
+            var files = Directory.GetFiles(path).Where(f => f.EndsWith("zpd.txt"));
+            return dirs.SelectMany(GetZpdFilesRecursive).Concat(files);
         }
         private static bool TryReadDataHead(StreamReader reader, out DataHead? dataHead)
         {
