@@ -103,17 +103,15 @@ namespace ZpdFile
             dataHead = null;
             return false;
         }
-        private static List<string> ReadDataSectionAllLines(StreamReader reader)
+        private static IEnumerable<string> ReadDataSectionAllLines(StreamReader reader)
         {
-            List<string> lines = [];
             while (!reader.EndOfStream)
             {
                 string? line = reader.ReadLine();
                 if (string.IsNullOrEmpty(line)) continue;
                 if (line.StartsWith('-')) break;
-                lines.Add(line);
+                yield return line;
             }
-            return lines;
         }
         private static bool IsEndLine(string line)
         {
