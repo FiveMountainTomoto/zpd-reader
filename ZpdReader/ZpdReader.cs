@@ -29,7 +29,10 @@ namespace ZpdFile
         public ZpdData Read(string filePath)
         {
             using StreamReader reader = new(filePath);
-            ZpdData zpdData = new();
+            ZpdData zpdData = new()
+            {
+                RawFileName = filePath
+            };
             // 读取数据头
             if (!TryReadDataHead(reader, out DataHead? dataHead))
                 throw new FormatException("Invalid ZPD file format: Data head not found.");
@@ -61,6 +64,7 @@ namespace ZpdFile
                     else throw new ArgumentException($"Invalid marker type: {marker}");
                 }
             }
+            zpdData.CheckSiteIdConsistent();
             return zpdData;
         }
         public static IEnumerable<string> GetZpdFilesRecursive(string path)
